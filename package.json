@@ -1,0 +1,7 @@
+{
+  "name": "dolphin",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
