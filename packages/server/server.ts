@@ -3,6 +3,7 @@ import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
 import fastify from "fastify";
 import { appRouter } from "./router/index";
 import { createContext } from "./router/context";
+import cors from "@fastify/cors";
 
 export interface ServerOptions {
   dev?: boolean;
@@ -15,7 +16,10 @@ export function createServer(opts: ServerOptions) {
   const port = opts.port ?? 3000;
   const prefix = opts.prefix ?? "/trpc";
   const server = fastify({ logger: dev });
-
+  void server.register(cors, {
+    origin: "http://localhost:5173",
+    credentials: true,
+  });
   void server.register(ws);
   void server.register(fastifyTRPCPlugin, {
     prefix,

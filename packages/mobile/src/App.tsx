@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "@lynx-js/react";
-import { trpc } from "./utils/trpcClient.ts"; // ✅ Import tRPC client
+import { trpc } from "./utils/trpcClient.ts"; // Import tRPC client
 import "./App.css";
 import arrow from "./assets/arrow.png";
 import lynxLogo from "./assets/lynx-logo.png";
 import reactLynxLogo from "./assets/react-logo.png";
 
-// ✅ Define a User type based on your database model
+// Define a User type based on your database model
 type User = {
   id: string;
   name: string;
@@ -15,7 +15,7 @@ type User = {
 export function App() {
   const [alterLogo, setAlterLogo] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  const [newUser, setNewUser] = useState<User | null>(null); // ✅ Track new users via WebSocket
+  const [newUser, setNewUser] = useState<User | null>(null); // Track new users via WebSocket
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function App() {
           "57c4ca3d-d08c-4876-92c0-ca9154ad031b"
         );
         setUser(userData);
-        console.log("✅ User Data:", userData);
+        console.log("User Data:", userData);
       } catch (error) {
         console.error("❌ User Fetch Error:", error);
       } finally {
@@ -36,7 +36,7 @@ export function App() {
     fetchUser();
   }, []);
 
-  // ✅ Subscribe to new user events via WebSocket
+  // Subscribe to new user events via WebSocket
   useEffect(() => {
     console.log("📡 Subscribing to WebSocket...");
     const sub = trpc.user.onNewUser.subscribe(undefined, {

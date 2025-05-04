@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
-    "module": "NodeNext", // ✅ Fix: Ensures compatibility with Node ESM
-    "moduleResolution": "NodeNext", // ✅ Fix: Allows default module resolution
+    "module": "NodeNext", // Fix: Ensures compatibility with Node ESM
+    "moduleResolution": "NodeNext", // Fix: Allows default module resolution
 
     "strict": true,
     "isolatedModules": true,

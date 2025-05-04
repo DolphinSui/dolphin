@@ -8,16 +8,15 @@ import {
 import superjson from "superjson";
 import { serverConfig } from "../../../../config.ts";
 import type { AppRouter } from "../../../server/router/index.ts";
-import "./polyfill.ts";
 
 // Use your actual local IP instead of `localhost` for mobile apps
 const { port, prefix } = serverConfig;
 const urlEnd = `localhost:${port}${prefix}`;
 
-// Initialize WebSocket Client for Subscriptions
+//Initialize WebSocket Client for Subscriptions
 const wsClient = createWSClient({ url: `ws://${urlEnd}` });
 
-// Initialize tRPC Client
+//Initialize tRPC Client
 export const trpc = createTRPCProxyClient<AppRouter>({
   transformer: superjson,
   links: [
